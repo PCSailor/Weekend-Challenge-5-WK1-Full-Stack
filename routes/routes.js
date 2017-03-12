@@ -95,16 +95,16 @@ router.delete('/:id', function(req, res) {
 
 
 router.put('/complete/:id', function(req, res) {
-  var employeeoCompleteId = req.params.id;
+  var employeeToCompleteId = req.params.id;
   console.log('hit complete route');
-  console.log('here is the id to complete ->', employeeoCompleteId);
+  console.log('here is the id to complete ->', employeeToCompleteId);
   pool.connect(function(err, client, done) {
     if(err){
       console.log(err);
       res.sendStatus(500);
     }else{
       client.query('UPDATE employee_salary_data SET status=TRUE WHERE ID=$1;',
-        [employeeoCompleteId], function(err, result) {
+        [employeeToCompleteId], function(err, result) {
           done();
           if(err){
             console.log(err);

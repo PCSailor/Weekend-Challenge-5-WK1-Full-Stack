@@ -7,7 +7,7 @@ myApp.factory('TaskFactory', ['$http', function($http) {
   function getTasks() {
     $http({
       method: 'GET',
-      url: '/tasks'
+      url: '/employee'
     }).then(function(response) {
       console.log('response from factory: ', response);
       console.log('response.data from factory: ', response.data);

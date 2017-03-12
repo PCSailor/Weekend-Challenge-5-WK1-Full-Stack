@@ -15,7 +15,7 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
   self.addTask = function() {
     $http({
       method: 'POST',
-      url: '/tasks',
+      url: '/employee',
       data: self.newTask
     }).then(function(response){
       console.log(response);
@@ -27,7 +27,7 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
   self.deleteTask = function(taskId) {
     $http({
       method: 'DELETE',
-      url: '/tasks/' + taskId
+      url: '/employee/' + taskId
     }).then(function(response) {
       TaskFactory.updateTasks();
     });
@@ -36,7 +36,7 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
   self.completeTask = function(taskId) {
     $http({
       method: 'PUT',
-      url: '/tasks/complete/' + taskId
+      url: '/employee/complete/' + taskId
     }).then(function(response) {
       TaskFactory.updateTasks();
     });
@@ -45,7 +45,7 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
   self.uncompleteTask = function(taskId) {
     $http({
       method: 'PUT',
-      url: '/tasks/uncomplete/' + taskId
+      url: '/employee/uncomplete/' + taskId  // TODO: 
     }).then(function(response) {
       TaskFactory.updateTasks();
     });
