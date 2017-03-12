@@ -9,13 +9,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
     })
     .when('/todoList', {
       templateUrl: '/views/todoList.html',
-// <<<<<<< HEAD
       controller: 'EmployeeController',
-      // controllerAs: 'ec'
-// =======
-      // controller: 'TaskController',
       controllerAs: 'tc'
-// >>>>>>> parent of d4d1dcf... adding functionality-buttons working
     })
     .when('/about', {
       templateUrl: '/views/about.html',
