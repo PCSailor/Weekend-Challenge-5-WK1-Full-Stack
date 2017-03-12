@@ -1,3 +1,4 @@
+<!-- <<<<<<< HEAD -->
   <!-- // ec.employeeList = {
   //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
   // } -->
@@ -5,13 +6,31 @@
   <!-- // ec.employeeList.list =  [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}] -->
 
 
-<label>New Employee Data</label>
+<!-- <label>New Employee Data</label>
 <input ng-model="ec.newEmployee.employeeData">
 <button ng-click="ec.addEmployee()">Add Employee</button>
 <div ng-repeat="employee in ec.employeeList.list" ng-class="{complete: employee.status, active: !employee.status}" class="row col-xs-12">
-  <!-- {{employee.name}} and the id number is {{employeeId}} -->
+  <!-- {{employee.name}} and the id number is {{employeeId}} --
   <span class="col-xs-6">{{employee}} the status is {{employee.status}}</span>
   <span class="col-xs-3" ng-hide="employee.status"><button ng-click="ec.activeEmployee(employeeId)" class="btn btn-primary">Active</button></span>
   <span class="col-xs-3" ng-show="employee.status"><button ng-click="ec.inactiveEmployee(employeeId)" class="btn btn-info">Inactive</button></span>
   <span class="col-xs-3"><button ng-click="ec.deleteEmployee(employeeId)" class="btn btn-danger">Delete</button></span>
+======= -->
+  <!-- // tc.taskList = {
+  //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
+  // } -->
+
+  <!-- // tc.taskList.list =  [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}] -->
+
+
+<label>New Task Name</label>
+<input ng-model="tc.newTask.employeeData">
+<button ng-click="tc.addTask()">Add Task</button>
+<div ng-repeat="task in tc.taskList.list" ng-class="{complete: task.status, active: !task.status}" class="row col-xs-12">
+  <!-- {{task.name}} and the id number is {{task.id}} -->
+  <span class="col-xs-6">{{task}} the status is {{task.status}}</span>
+  <span class="col-xs-3" ng-hide="task.status"><button ng-click="tc.completeTask(task.id)" class="btn btn-primary">Complete</button></span>
+  <span class="col-xs-3" ng-show="task.status"><button ng-click="tc.uncompleteTask(task.id)" class="btn btn-info">This shouldn't be complete</button></span>
+  <span class="col-xs-3"><button ng-click="tc.deleteTask(task.id)" class="btn btn-danger">Delete</button></span>
+<!-- >>>>>>> parent of d4d1dcf... adding functionality-buttons working -->
 </div>
