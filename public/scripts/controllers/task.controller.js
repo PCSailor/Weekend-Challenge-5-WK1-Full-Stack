@@ -1,10 +1,10 @@
 myApp.controller('EmployeeController', ['$http', 'EmployeeFactory', function($http, EmployeeFactory){
-  console.log('The EmployeeController was loaded');
+  console.log('EmployeeController is loaded');
   var self = this;
   self.newEmployee = {};
   self.employeeList = EmployeeFactory.allEmployee;
 
-  self.addTask = function() {
+  self.addEmployee = function() {
     $http({
       method: 'POST',
       url: '/employee',
@@ -16,28 +16,28 @@ myApp.controller('EmployeeController', ['$http', 'EmployeeFactory', function($ht
     });
   }
 
-  self.deleteTask = function(taskId) {
+  self.deleteEmployee = function(employeeId) {
     $http({
       method: 'DELETE',
-      url: '/employee/' + taskId
+      url: '/employee/' + employeeId
     }).then(function(response) {
       EmployeeFactory.updateEmployee();
     });
   }
 
-  self.completeTask = function(taskId) {
+  self.activeEmployee = function(employeeId) {
     $http({
       method: 'PUT',
-      url: '/employee/complete/' + taskId
+      url: '/employee/active/' + employeeId
     }).then(function(response) {
       EmployeeFactory.updateEmployee();
     });
   }
 
-  self.uncompleteTask = function(taskId) {
+  self.inactiveEmployee = function(employeeId) {
     $http({
       method: 'PUT',
-      url: '/employee/uncomplete/' + taskId  // TODO:
+      url: '/employee/inactive/' + employeeId  // TODO:
     }).then(function(response) {
       EmployeeFactory.updateEmployee();
     });

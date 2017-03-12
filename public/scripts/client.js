@@ -10,7 +10,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     .when('/todoList', {
       templateUrl: '/views/todoList.html',
       controller: 'EmployeeController',
-      controllerAs: 'tc'
+      controllerAs: 'ec'
     })
     .when('/about', {
       templateUrl: '/views/about.html',

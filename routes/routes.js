@@ -19,10 +19,8 @@ router.get('/', function(req, res) {
       console.log(err);
       res.sendStatus(500);
     }else{
-      // SELECT * FROM task;
       client.query('SELECT * FROM employee_salary_data ORDER BY status, id;', function(err, result) {
         done();
-
         if(err){
           console.log(err);
           res.sendStatus(500);
@@ -35,15 +33,10 @@ router.get('/', function(req, res) {
   });
 });
 
-// create a new task in the db
 router.post('/', function(req, res) {
   console.log('hit post route');
   console.log('here is the body ->', req.body);
-
   var employeeObject = req.body;
-
-  // db query
-  // INSERT INTO task (name) VALUES ('test');
   pool.connect(function(err, client, done) {
     if(err){
       console.log(err);
@@ -64,14 +57,10 @@ router.post('/', function(req, res) {
   });
 });
 
-// create a new task in the db
 router.delete('/:id', function(req, res) {
   var employeeToDeleteId = req.params.id;
   console.log('hit delete route');
   console.log('here is the id to delete ->', employeeToDeleteId);
-
-  // db query
-  // DELETE FROM task WHERE id=7
   pool.connect(function(err, client, done) {
     if(err){
       console.log(err);
@@ -91,20 +80,17 @@ router.delete('/:id', function(req, res) {
   });
 });
 
-
-
-
-router.put('/complete/:id', function(req, res) {
-  var employeeToCompleteId = req.params.id;
-  console.log('hit complete route');
-  console.log('here is the id to complete ->', employeeToCompleteId);
+router.put('/active/:id', function(req, res) {
+  var employeeToactiveId = req.params.id;
+  console.log('hit active route');
+  console.log('here is the id to active ->', employeeToactiveId);
   pool.connect(function(err, client, done) {
     if(err){
       console.log(err);
       res.sendStatus(500);
     }else{
       client.query('UPDATE employee_salary_data SET status=TRUE WHERE ID=$1;',
-        [employeeToCompleteId], function(err, result) {
+        [employeeToactiveId], function(err, result) {
           done();
           if(err){
             console.log(err);
@@ -117,18 +103,17 @@ router.put('/complete/:id', function(req, res) {
   });
 });
 
-
-router.put('/uncomplete/:id', function(req, res) {
-  var employeeToIncompleteId = req.params.id;
-  console.log('hit complete route');
-  console.log('here is the id to complete ->', employeeToIncompleteId);
+router.put('/inactive/:id', function(req, res) {
+  var employeeToinactiveId = req.params.id;
+  console.log('hit active route');
+  console.log('here is the id to active ->', employeeToinactiveId);
   pool.connect(function(err, client, done) {
     if(err){
       console.log(err);
       res.sendStatus(500);
     }else{
       client.query('UPDATE employee_salary_data SET status=FALSE WHERE ID=$1;',
-        [employeeToIncompleteId], function(err, result) {
+        [employeeToinactiveId], function(err, result) {
           done();
           if(err){
             console.log(err);
