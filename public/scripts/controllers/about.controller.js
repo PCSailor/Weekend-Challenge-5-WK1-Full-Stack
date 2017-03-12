@@ -1,5 +1,5 @@
 myApp.controller('AboutController', function(){
-  console.log('About Controller was loaded');
+  console.log('about.controller.js is run');
   var self = this;
-  self.listOfPeople = ['Phil', 'Tom', 'Jeremy', 'Celina', 'Kris'];
+  self.anArray = ['about-one', 'about-two', 'about-three', 'about-four', 'about-five'];
 });

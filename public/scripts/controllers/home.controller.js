@@ -1,5 +1,5 @@
-myApp.controller('HomeController', ['TaskFactory', function(TaskFactory){
-  console.log('Home Controller was loaded');
+myApp.controller('HomeController', ['EmployeeFactory', function(EmployeeFactory){
+  console.log('home.controller.js is run');
   var self = this;
-  self.someMessage = 'This site is amazing!!';
+  self.Message = 'home.controller.js is run';
 }]);

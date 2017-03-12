@@ -9,7 +9,7 @@ var config = {
 };
 var pool = new pg.Pool(config);
 
-// get all employees
+// NOTE: get all employees
 router.get('/', function(req, res) {
   console.log('routes.js/router.get/function ran');
   pool.connect(function(err, client, done) {
@@ -31,6 +31,7 @@ router.get('/', function(req, res) {
   });
 });
 
+// NOTE: Add new employee
 router.post('/', function(req, res) {
   console.log('routes.js/router.post/req.body: ', req.body);
 // QUESTION: Switch code lines (var employeeObject = req.body;) with console.log above & all breaks??
@@ -55,6 +56,7 @@ router.post('/', function(req, res) {
   });
 });
 
+// NOTE: Delete an employee
 router.delete('/:id', function(req, res) {
   var employeeToDeleteId = req.params.id;
   console.log('routes.js/router.delete/employeeToDeleteId: ', employeeToDeleteId);
@@ -77,6 +79,7 @@ router.delete('/:id', function(req, res) {
   });
 });
 
+// NOTE: Mark employee as active
 router.put('/active/:id', function(req, res) {
   var employeeToactiveId = req.params.id;
   console.log('routes.js/router.put/employeeToactiveId: ', employeeToactiveId);
@@ -99,6 +102,7 @@ router.put('/active/:id', function(req, res) {
   });
 });
 
+// NOTE: Mark employee as inactive
 router.put('/inactive/:id', function(req, res) {
   var employeeToinactiveId = req.params.id;
   console.log('routes.js/router.put/employeeToactiveId: ', employeeToinactiveId);
