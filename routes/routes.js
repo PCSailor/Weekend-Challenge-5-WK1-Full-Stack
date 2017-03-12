@@ -59,8 +59,7 @@ router.post('/', function(req, res) {
 
 router.delete('/:id', function(req, res) {
   var employeeToDeleteId = req.params.id;
-  console.log('hit delete route');
-  console.log('here is the id to delete ->', employeeToDeleteId);
+  console.log('routes.js/router.delete/employeeToDeleteId: ', employeeToDeleteId);
   pool.connect(function(err, client, done) {
     if(err){
       console.log(err);
