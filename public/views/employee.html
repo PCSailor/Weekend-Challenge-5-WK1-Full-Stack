@@ -1,27 +1,57 @@
+<!-- <h3>{{employee.First_Name}} and the id number is {{employee.Job_Title}}</h3> -->
+
+
 <label><h4>New Employee Data:     </h4></label>
-
 <input ng-model="ec.newEmployee.employeeData">
-
 <button ng-click="ec.addEmployee()">Add Employee</button>
 
 
 
+<!-- <table>
+  <thead>
+    <tr>
+      <td> Last Name </td>
+      <td> First Name </td>
+      <td> Job Title </td>
+      <td> Employee ID </td>
+      <td> Salary (Yearly) </td>
+      <td> Active/Inactive </td>
+    </tr>
+  </thead>
+  <tbody> -->
 
-
-
-
+  <!-- </tbody>
+</table> -->
 
 <div ng-repeat="employee in ec.employeeList.list" ng-class="{active: employee.status, inactive: !employee.status}" class="row col-xs-12">
+  
+<table>
+  <thead>
+    <tr>
+      <td> Last Name </td>
+      <td> First Name </td>
+      <td> Job Title </td>
+      <td> Employee ID </td>
+      <td> Salary (Yearly) </td>
+      <td> Active/Inactive </td>
+    </tr>
+  </thead>
 
-<h3>{{employee.First_Name}} and the id number is {{employee.Job_Title}}</h3>
 
-  <span class="col-xs-6">{{employee}} the status is {{employee.status}}</span>
 
+
+    <tbody>
+
+  <span class="col-xs-6">{{employee}} the status is {{employee.status}}</span> <!-- NOTE: This line puts database cell data on the page -->
+
+<!-- NOTE: Three Buttons: Active/Inactive/Delete -->
   <span class="col-xs-3" ng-hide="employee.status"><button ng-click="ec.activeEmployee(employee.id)" class="btn btn-primary">Active</button></span>
 
   <span class="col-xs-3" ng-show="employee.status"><button ng-click="ec.inactiveEmployee(employee.id)" class="btn btn-info">Inactive</button></span>
 
-  <span class="col-xs-3">
-    <button ng-click="ec.deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-  </span>
+  <span class="col-xs-3"><button ng-click="ec.deleteEmployee(employee.id)" class="btn btn-danger">Delete</button></span>
+
+</tbody>
+</table>
+
 </div>
