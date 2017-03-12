@@ -1,4 +1,4 @@
-var myApp = angular.module('TaskApp', ['ngRoute']);
+var myApp = angular.module('EmployeeApp', ['ngRoute']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -9,7 +9,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     })
     .when('/todoList', {
       templateUrl: '/views/todoList.html',
-      controller: 'TaskController',
+      controller: 'EmployeeController',
       controllerAs: 'tc'
     })
     .when('/about', {

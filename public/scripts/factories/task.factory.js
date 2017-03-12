@@ -1,18 +1,18 @@
-myApp.factory('TaskFactory', ['$http', function($http) {
+myApp.factory('EmployeeFactory', ['$http', function($http) {
 
-  var factoryTasks = { list: [] };
+  var factoryEmployee = { list: [] };
 
-  getTasks();
+  getEmployee();
 
-  function getTasks() {
+  function getEmployee() {
     $http({
       method: 'GET',
       url: '/employee'
     }).then(function(response) {
       console.log('response from factory: ', response);
       console.log('response.data from factory: ', response.data);
-      factoryTasks.list = response.data;
-      // factoryTasks = {
+      factoryEmployee.list = response.data;
+      // factoryEmployee = {
       //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
       // }
     });
@@ -20,7 +20,7 @@ myApp.factory('TaskFactory', ['$http', function($http) {
 
   // this is the public API, if it's not in here, your controller won't see it
   return {
-    allTasks: factoryTasks,
-    updateTasks: getTasks
+    allEmployee: factoryEmployee,
+    updateEmployee: getEmployee
   };
 }]);

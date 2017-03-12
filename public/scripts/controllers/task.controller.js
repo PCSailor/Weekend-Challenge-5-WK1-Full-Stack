@@ -1,26 +1,18 @@
-myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, TaskFactory){
-  console.log('The TaskController was loaded');
+myApp.controller('EmployeeController', ['$http', 'EmployeeFactory', function($http, EmployeeFactory){
+  console.log('The EmployeeController was loaded');
   var self = this;
-  self.newTask = {};
-  self.taskList = TaskFactory.allTasks;
-
-  // TaskFactory.allTasks = {
-  //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
-  // }
-
-  // self.taskList = {
-  //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
-  // }
+  self.newEmployee = {};
+  self.employeeList = EmployeeFactory.allEmployee;
 
   self.addTask = function() {
     $http({
       method: 'POST',
       url: '/employee',
-      data: self.newTask
+      data: self.newEmployee
     }).then(function(response){
       console.log(response);
-      TaskFactory.updateTasks();
-      self.newTask = {};
+      EmployeeFactory.updateEmployee();
+      self.newEmployee = {};
     });
   }
 
@@ -29,7 +21,7 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
       method: 'DELETE',
       url: '/employee/' + taskId
     }).then(function(response) {
-      TaskFactory.updateTasks();
+      EmployeeFactory.updateEmployee();
     });
   }
 
@@ -38,16 +30,16 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
       method: 'PUT',
       url: '/employee/complete/' + taskId
     }).then(function(response) {
-      TaskFactory.updateTasks();
+      EmployeeFactory.updateEmployee();
     });
   }
 
   self.uncompleteTask = function(taskId) {
     $http({
       method: 'PUT',
-      url: '/employee/uncomplete/' + taskId  // TODO: 
+      url: '/employee/uncomplete/' + taskId  // TODO:
     }).then(function(response) {
-      TaskFactory.updateTasks();
+      EmployeeFactory.updateEmployee();
     });
   }
 
