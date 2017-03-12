@@ -2,7 +2,7 @@ myApp.controller('EmployeeController', ['$http', 'EmployeeFactory', function($ht
   console.log('EmployeeController is loaded');
   var self = this;
   self.newEmployee = {};
-  self.taskList = EmployeeFactory.allEmployees;
+  self.employeeList = EmployeeFactory.allEmployees;
 
   self.addEmployee = function() {
     $http({

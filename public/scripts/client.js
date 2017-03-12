@@ -1,4 +1,4 @@
-var myApp = angular.module('TaskApp', ['ngRoute']);
+var myApp = angular.module('EmployeeApp', ['ngRoute']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider

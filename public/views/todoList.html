@@ -1,10 +1,18 @@
 <label>New Employee/label>
+
 <input ng-model="tc.newEmployee.employeeData">
+
 <button ng-click="tc.addTask()">Add Employee</button>
-<div ng-repeat="task in tc.taskList.list" ng-class="{complete: task.status, active: !task.status}" class="row col-xs-12">
-  <!-- {{task.name}} and the id number is {{task.id}} -->
+
+<div ng-repeat="task in tc.employeeList.list" ng-class="{complete: task.status, active: !task.status}" class="row col-xs-12">
+
+{{task.name}} and the id number is {{task.id}}
+
   <span class="col-xs-6">{{task}} the status is {{task.status}}</span>
+
   <span class="col-xs-3" ng-hide="task.status"><button ng-click="tc.activeEmployee(task.id)" class="btn btn-primary">Active</button></span>
+
   <span class="col-xs-3" ng-show="task.status"><button ng-click="tc.inactiveEmployee(task.id)" class="btn btn-info">Inactive</button></span>
+
   <span class="col-xs-3"><button ng-click="tc.deleteTask(task.id)" class="btn btn-danger">Delete</button></span>
 </div>

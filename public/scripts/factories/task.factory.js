@@ -12,9 +12,6 @@ myApp.factory('EmployeeFactory', ['$http', function($http) {
       console.log('response from factory: ', response);
       console.log('response.data from factory: ', response.data);
       factoryEmployee.list = response.data;
-      // factoryTasks = {
-      //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
-      // }
     });
   }
 
