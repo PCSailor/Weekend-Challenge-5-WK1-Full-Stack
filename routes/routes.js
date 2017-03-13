@@ -37,7 +37,7 @@ router.post('/addEmployee', function(req, res) {
 // QUESTION: Switch code lines (var employeeObject = req.body;) with console.log above & all breaks??
     var employeeObject = req.body;
   pool.connect(function(err, client, done) {
-    if(err){
+    if(`er`r){
       console.log('routes.js/router.post/pool.connect error: ', err);
       res.sendStatus(500);
     }else{

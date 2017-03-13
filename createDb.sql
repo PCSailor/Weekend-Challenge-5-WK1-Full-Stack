@@ -4,15 +4,16 @@ CREATE TABLE employee_salary_data (
 );
 
 ALTER TABLE "employee_salary_data"
-ADD "Last_Name" varchar(40);
+ADD "Last_Name" varchar(40) NOT NULL;
 ALTER TABLE "employee_salary_data"
-ADD "First_Name" varchar(40);
+ADD "First_Name" varchar(40) NOT NULL;
 ALTER TABLE "employee_salary_data"
 ADD "Job_Title" varchar(40);
 ALTER TABLE "employee_salary_data"
-ADD "Employee_ID" int;
+ADD "Employee_ID" int UNIQUE NOT NULL;
 ALTER TABLE "employee_salary_data"
 ADD "Salary_Yearly" DEC(10,2);
+active BOOLEAN NOT NULL DEFAULT true;
 
 INSERT INTO employee_salary_data ("Last_Name", "First_Name", "Job_Title","Employee_ID", "Salary_Yearly") VALUES ('employee-last-01', 'employee-first-01', 'CEO', 001, 400000);
 INSERT INTO employee_salary_data ("Last_Name", "First_Name", "Job_Title","Employee_ID", "Salary_Yearly") VALUES ('employee-last-002', 'employee-first-002', 'GM', 002, 160000);

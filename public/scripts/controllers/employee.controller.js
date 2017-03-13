@@ -1,8 +1,18 @@
 myApp.controller('EmployeeController', ['EmployeeFactory', function(EmployeeFactory){
   console.log('EmployeeController.js is loaded');
   var self = this; // NOTE: self here = ec in index.html
-  self.newEmployee = {};  // NOTE: user entry fields
+  self.newEmployee = {};  // NOTE: object connected to html form // user entry fields
   self.employeeList = EmployeeFactory.allEmployees; // NOTE: replaced by array AND this is the required code to bring in the full array
+
+
+
+// NOTE: if it's teid to DOM, start with self.
+
+
+
+
+
+
 // console.log('self = ', self); // NOTE: self.employeeList.list[0]
 // console.log('typeof self = ', typeof self); // NOTE: is an object
 // console.log('self.employeeList.list[0] = ', self.employeeList.list[0]); // NOTE: is undefined

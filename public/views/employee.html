@@ -1,6 +1,6 @@
-<h4>{{employee.Salary_Yearly}}</h4>
-<h4>{{employee.Job_Title}}</h4>
-<h4>{{employee.First_Name}}</h4>
+<!-- <h4>{{ec.employee.Salary_Yearly}}</h4>
+<h4>{{ec.employee.Job_Title}}</h4>
+<h4>{{ec.{employee.First_Name}}</h4> -->
 
 
 
@@ -10,10 +10,13 @@
 <div class="container-fluid">
 
 <div class="row col-md-12" ng-class="{active: employee.status, inactive: !employee.status}">
+
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
       <form id="newEmployeeForm">
+      <form id="newEmployeeForm ng-submit="ec.addEmployee""><!-- NOTE: need this complete -->
+        <!-- NOTE: Submit allows hitting enter at to enter data work, button requires the button click. -->
         <td><input ng-model = "ec.addEmployee.Employee_ID" placeholder="Employee_ID"></td>
         <td><input ng-model = "ec.addEmployee.First_Name" placeholder="First_Name"></td>
         <td><input ng-model = "ec.addEmployee.Last_Name" placeholder="Last_Name"></td>
@@ -44,11 +47,12 @@
 
   <tbody>
 <!-- <div ng-class="{active: employee.status, inactive: !employee.status}" class="row col-xs-12"> -->
+
 <tr ng-repeat="employee in ec.employeeList.list">
 
     <td>{{employee.Employee_ID}}</td>
-    <td>{{employee.First_Name}}</td>
     <td>{{employee.Last_Name}}</td>
+    <td>{{employee.First_Name}}</td>
     <td>{{employee.Job_Title}}</td>
     <td>{{employee.Salary_Yearly}}</td>
     <!-- <td>{{employee.status}}</td> -->
