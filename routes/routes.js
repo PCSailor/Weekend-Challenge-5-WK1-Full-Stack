@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
           console.log('routes.js/router.get/client.query error: ', err);
           res.sendStatus(500);
         }else{
-          console.log('routes.js/router.get/client.query result.rows: ', result.rows);
+          // console.log('routes.js/router.get/client.query result.rows: ', result.rows);
           res.status(200).send(result.rows);
         }
       });
@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
 });
 
 // NOTE: Add new employee
-router.post('/', function(req, res) {
+router.post('/addEmployee', function(req, res) {
   console.log('routes.js/router.post/req.body: ', req.body);
 // QUESTION: Switch code lines (var employeeObject = req.body;) with console.log above & all breaks??
     var employeeObject = req.body;
@@ -43,13 +43,13 @@ router.post('/', function(req, res) {
     }else{
       // NOTE: INSERT INTO employee_salary_data ("Last_Name", "First_Name", "Job_Title","Employee_ID", "Salary_Yearly") VALUES ('employee-last-01', 'employee-first-01', 'CEO', 001, 400000);
       client.query('INSERT INTO employee_salary_data ("Last_Name", "First_Name", "Job_Title","Employee_ID", "Salary_Yearly") VALUES ($1, $2, $3, $4, $5);',
-      [employeeObject.employeeData], function(err, result) {
+      [employeeObject.Last_Name, employeeObject.First_Name, employeeObject.Job_Title, employeeObject.Employee_ID, employeeObject.Salary_Yearly], function(err, result) {
         done();
         if(err){
           console.log('routes.js/router.post/client.query error: ', err);
           res.sendStatus(500);
         }else{
-          res.sendStatus(201);
+          res.status(201).send(result.rows);
         }
       });
     }
@@ -79,7 +79,7 @@ router.delete('/:id', function(req, res) {
   });
 });
 
-// NOTE: Mark employee as active
+// NOTE: mark employee as active
 router.put('/active/:id', function(req, res) {
   var employeeToactiveId = req.params.id;
   console.log('routes.js/router.put/employeeToactiveId: ', employeeToactiveId);
@@ -102,7 +102,7 @@ router.put('/active/:id', function(req, res) {
   });
 });
 
-// NOTE: Mark employee as inactive
+// NOTE: mark employee as inactive
 router.put('/inactive/:id', function(req, res) {
   var employeeToinactiveId = req.params.id;
   console.log('routes.js/router.put/employeeToactiveId: ', employeeToinactiveId);

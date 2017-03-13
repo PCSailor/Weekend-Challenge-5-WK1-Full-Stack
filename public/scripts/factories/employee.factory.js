@@ -1,5 +1,9 @@
 myApp.factory('EmployeeFactory', ['$http', function($http) {
   var factoryEmployee = { list: [] };
+
+  var self = this; // NOTE: self here = ec in index.html
+  self.newEmployee = {};  // NOTE: user entry fields
+
   getEmployee();
 
   function getEmployee() {
@@ -8,20 +12,22 @@ myApp.factory('EmployeeFactory', ['$http', function($http) {
       url: '/employee'
     }).then(function(response) {
       console.log('response.data from factory: ', response.data);
-      factoryEmployee.list = response.data;
+      factoryEmployee.list = response.data;  // NOTE: angJS adds alot with response alone so data pulls just result from server
     });
   }
 
-  function addEmployee(sumNewEmployee) {
+  function addEmployee(newEmployee) {
+    console.log('employee.factory.js/function addEmployee: ', self.addEmployee);
     $http({
       method: 'POST',
-      url: '/employee',
-      data: sumNewEmployee
+      url: '/employee/addEmployee',
+      data: newEmployee
     }).then(function(response){
       console.log(response);
       getEmployee();
     });
   }
+  // NOTE: This PUT ties in with <button ng-click="bk.editBook(book)">Save</button>.  Like the function example below, bookToEdit is replaced
 
   function deleteEmployee(employeeId) {
     $http({
@@ -41,6 +47,18 @@ myApp.factory('EmployeeFactory', ['$http', function($http) {
     });
   }
 
+  // QUESTION: From Books(phi-pg-update-delete-angjs-convert-books).  Notice .id differences
+  // NOTE: This PUT ties in with <button ng-click="bk.editBook(book)">Save</button>.  Like the function example below, bookToEdit is replaced
+//   self.editBook = function(bookToEdit){
+//   $http({
+//     method: 'PUT',
+//     url: '/books/edit/' + bookToEdit.id,
+//     data: bookToEdit
+//   }).then(function(response){
+//     getBooks();
+//   });
+// }
+
   function inactiveEmployee(employeeId) {
     $http({
       method: 'PUT',
@@ -56,6 +74,7 @@ myApp.factory('EmployeeFactory', ['$http', function($http) {
     updateEmployees: getEmployee,
     deleteEmployee: deleteEmployee,
     activeEmployee: activeEmployee,
-    inactiveEmployee: inactiveEmployee
+    inactiveEmployee: inactiveEmployee,
+    addEmployee: addEmployee
   };
 }]);
